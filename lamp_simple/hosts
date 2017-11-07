@@ -1,7 +1,5 @@
 [webservers]
-web3
+#SERVER_IP#
 
 [dbservers]
-web2
-
-
+#SERVER_IP#
