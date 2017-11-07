@@ -1,5 +1,5 @@
 [webservers]
-#SERVER_IP# ansible_ssh_user=ubuntu
+#SERVER_IP#
 
 [dbservers]
-#SERVER_IP# ansible_ssh_user=ubuntu
+#SERVER_IP#
