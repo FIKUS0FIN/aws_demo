@@ -25,7 +25,7 @@ echo "getting DNS of the Instance :: $AWS_DNS "
 aws ec2 describe-instances --instance-ids $AWS_ID
 
 ## terminating Korobka
-if [[ ${KILL} == true ]]; then
+if [[ ${KILL} == "True" ]]; then
   echo "killing box "
   aws ec2 terminate-instances --instance-ids $AWS_ID
 fi
