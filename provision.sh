@@ -12,9 +12,9 @@ echo $KEY ${KEY}
 echo $AWS_DNS
 
 cd 00-simple-playbook-examples
-printf "$AWS_IP" >> hosts
+#printf "$AWS_IP" >> hosts
 ansible-playbook -i hosts prepare_ansible_target.yml
-
+ansible-playbook prepare_ansible_target.yml -i hosts --extra-vars "all=$AWS_IP"
 if [[ ${KILL_PROVISION} == "True" ]]; then
   echo "killing box "
   aws ec2 terminate-instances --instance-ids $AWS_ID
