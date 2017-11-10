@@ -1,0 +1,16 @@
+# web.yml
+---
+- hosts: all
+  user: ubuntu
+
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes
+      sudo: yes
+
+    - name: Install required packages
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - nginx
+        - postgresql
