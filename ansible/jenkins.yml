@@ -4,7 +4,7 @@
   hosts: all
   become: yes
   become_user: root
-  remote_user: root
+  remote_user: ubuntu
   vars:
     - update_apt_cache: yes
 
