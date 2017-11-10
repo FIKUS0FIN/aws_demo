@@ -1,5 +1,2 @@
-[webservers]
-#SERVER_IP#
-
-[dbservers]
-#SERVER_IP#
+[all]
+$LOCALHOST$

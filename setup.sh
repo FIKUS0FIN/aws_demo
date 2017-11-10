@@ -32,4 +32,4 @@ fi
 
 echo $AWS_ID > ../aws_id.conf
 echo $AWS_DNS > ../aws_DNS.conf
-printf "TAG ${TAG}\nKEY ${KEY}\nKIll ${KILL_PROVISION}" > ../param.conf
+printf "TAG ${TAG}\nKEY ${KEY}\nKILL ${KILL_PROVISION}" > ../param.conf
