@@ -2,7 +2,7 @@
 
 #function
 ##------------------------------------------------------------------------------
-function kill_aws
+function kill_aws ()
 {
   if [[ $1 == "True" ]]; then
     echo "killing box "
@@ -10,7 +10,7 @@ function kill_aws
   fi
 }
 
-function ansible_task
+function ansible_task ()
 {
   sleep 60
   cd ansible
@@ -19,7 +19,7 @@ function ansible_task
   ansible-playbook -i hosts $1.yml
 }
 
-function aws_result
+function aws_result ()
 {
   echo "AWS box wass created with TAG :: $TAG"
   echo "AWS DNS name is :: $AWS_DNS"
@@ -44,4 +44,4 @@ if [[ $TAG != "none" ]]; then
     aws_result
 fi
 
-kill_aws
+kill_aws $KILL_PROVISION
