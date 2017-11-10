@@ -12,7 +12,7 @@ function kill_aws
 
 function ansible_task
 {
-  sleep 30
+  sleep 60
   cd ansible
   echo $PWD
   printf "[all]\n$AWS_DNS\n" > hosts
@@ -35,6 +35,7 @@ KILL_PROVISION=$(cat ../param.conf | grep "KILL" | awk '{print $2}')
 TAG=$(cat ../param.conf | grep "TAG" | awk '{print $2}')
 KEY=$(cat ../param.conf | grep "KEY" | awk '{print $2}')
 
+aws_result
 
 if [[ $TAG != "none" ]]; then
     ansible_task $TAG
