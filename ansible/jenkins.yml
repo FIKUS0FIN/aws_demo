@@ -3,8 +3,8 @@
 - name: Provision a Jenkins CI server
   hosts: all
   become: yes
-  become_user: root
   remote_user: ubuntu
+  become_user: root
   vars:
     - update_apt_cache: yes
 
