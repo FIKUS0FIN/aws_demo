@@ -14,10 +14,10 @@ echo $AWS_DNS
 sleep 60
 cd ansible
 echo $PWD
-#printf "$AWS_IP" >> hosts
+printf "[all]\n$AWS_IP\n" > hosts
 #ansible-playbook -i hosts prepare_ansible_target.yml
 #ansible-playbook prepare_ansible_target.yml -i hosts --extra-vars "all=$AWS_DNS"
-ansible-playbook -i $AWS_DNS, jenkins.yml
+ansible-playbook -i hosts, web.yml
 
 if [[ ${KILL_PROVISION} == "True" ]]; then
   echo "killing box "
