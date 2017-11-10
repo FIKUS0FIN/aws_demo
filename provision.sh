@@ -13,7 +13,7 @@ echo $AWS_DNS
 
 cd 00-simple-playbook-examples
 printf "$AWS_IP" >> hosts
-ansible-playbook -i host prepare_ansible_target.yml
+ansible-playbook -i hosts prepare_ansible_target.yml
 
 if [[ ${KILL_PROVISION} == "True" ]]; then
   echo "killing box "
