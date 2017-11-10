@@ -14,7 +14,6 @@ echo $AWS_DNS
 sleep 60
 cd ansible
 echo $PWD
-ssh 
 #printf "$AWS_IP" >> hosts
 #ansible-playbook -i hosts prepare_ansible_target.yml
 #ansible-playbook prepare_ansible_target.yml -i hosts --extra-vars "all=$AWS_DNS"
