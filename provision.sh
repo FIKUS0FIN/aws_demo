@@ -12,11 +12,13 @@ function kill_aws ()
 
 function ansible_task ()
 {
-  sleep 60
+  sudo su ubuntu
+  sleep 30
   cd ansible
   echo $PWD
-  printf "[all]\n$AWS_DNS\n" > hosts
+  printf "$AWS_DNS\n" > hosts
   ansible-playbook -i hosts $1.yml
+  exit
 }
 
 function aws_result ()
