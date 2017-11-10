@@ -16,7 +16,7 @@ function ansible_task ()
   sleep 30
   cd ansible
   echo $PWD
-  printf "$AWS_DNS\n" > hosts
+  printf "\n$AWS_DNS\n" >> hosts
   ansible-playbook -i hosts $1.yml
   exit
 }
