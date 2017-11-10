@@ -37,10 +37,10 @@ KEY=$(cat ../param.conf | grep "KEY" | awk '{print $2}')
 
 aws_result
 
-if [[ $TAG != "none" ]]; then
-    ansible_task $TAG
+if [[ $TAG == "none" ]]; then
     aws_result
   else
+    ansible_task $TAG
     aws_result
 fi
 
