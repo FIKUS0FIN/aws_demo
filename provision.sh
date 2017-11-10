@@ -11,11 +11,11 @@ function kill_aws
 }
 function ansible_task
 {
-  sleep 30
+  sleep 60
   cd ansible
   echo $PWD
   printf "[all]\n$AWS_DNS\n" > hosts
-  ansible-playbook -i hosts, $1.yml
+  ansible-playbook -i hosts $1.yml
 }
 function aws_result
 {
@@ -41,4 +41,4 @@ if [[ $TAG != "none" ]]; then
     aws_result
 fi
 
-kill_aws 
+kill_aws
