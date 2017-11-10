@@ -14,7 +14,7 @@ echo "Kobobka is running"
 sleep 15
 
 ## Adding TAG to Korobka
-echo "Taging Korobka with Key and Tag  :: ${TAG} ::  ${KEY} "
+echo "Taging Korobka with Key and Tag  :: ${TAG} :: ${KEY} "
 aws ec2 create-tags --resources $AWS_ID --tags Key=${KEY},Value=${TAG}
 
 ## getting IP-addr Instance
@@ -32,3 +32,4 @@ fi
 
 echo $AWS_ID > ../aws_id.conf
 echo $AWS_DNS > ../aws_DNS.conf
+printf "TAG ${TAG}\nKEY ${KEY}\nKIll ${KILL_PROVISION}" > ../param.conf
