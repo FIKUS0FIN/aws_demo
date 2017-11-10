@@ -11,9 +11,9 @@ echo $TAG ${TAG}
 echo $KEY ${KEY}
 echo $AWS_DNS
 
-#cd lamp_simple
-#printf "$AWS_IP" >> hosts
-#ansible-playbook -i host site.yml
+cd 00-simple-playbook-examples
+printf "$AWS_IP" >> hosts
+ansible-playbook -i host prepare_ansible_target.yml
 
 if [[ ${KILL_PROVISION} == "True" ]]; then
   echo "killing box "
