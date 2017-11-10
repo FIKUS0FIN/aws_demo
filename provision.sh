@@ -11,6 +11,7 @@ echo $TAG ${TAG}
 echo $KEY ${KEY}
 echo $AWS_DNS
 
+sleep 30
 cd ansible
 echo $PWD
 #printf "$AWS_IP" >> hosts
