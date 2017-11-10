@@ -11,7 +11,7 @@ do
   echo "WATING FOR KOROBKA"
 done
 echo "Kobobka is running"
-sleep 5
+sleep 15
 
 ## Adding TAG to Korobka
 echo "Taging Korobka with Key and Tag  :: ${TAG} ::  ${KEY} "
