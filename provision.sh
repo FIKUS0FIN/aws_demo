@@ -9,14 +9,16 @@ function kill_aws
     aws ec2 terminate-instances --instance-ids $AWS_ID
   fi
 }
+
 function ansible_task
 {
-  sleep 60
+  sleep 30
   cd ansible
   echo $PWD
   printf "[all]\n$AWS_DNS\n" > hosts
   ansible-playbook -i hosts $1.yml
 }
+
 function aws_result
 {
   echo "AWS box wass created with TAG :: $TAG"

@@ -1,7 +1,7 @@
 # web.yml
 ---
 - hosts: all
-  user: ubuntu
+  remote_user: ubuntu
 
   tasks:
     - name: Update apt cache
