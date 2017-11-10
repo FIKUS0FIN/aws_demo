@@ -14,8 +14,8 @@ echo "Kobobka is running"
 sleep 5
 
 ## Adding TAG to Korobka
-echo "Taging Korobka with TAG :: ${TAG} "
-aws ec2 create-tags --resources $AWS_ID --tags Key=Stack,Value=${TAG}
+echo "Taging Korobka with TAG :: ${KEY} "
+aws ec2 create-tags --resources $AWS_ID --tags Key=Stack,Value=${KEY}
 
 ## getting IP-addr Instance
 AWS_DNS=$(aws ec2 describe-instances --output text --instance-ids $AWS_ID | grep ASSOCIATION | awk '{print $3}' | sort -u)
