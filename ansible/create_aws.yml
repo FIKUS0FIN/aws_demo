@@ -1,0 +1,32 @@
+- hosts: localhost
+  remote_user: jenkins
+  tasks:
+      - name: Creating es ec2 instance
+        ec2:
+          region: us-west-2
+          assign_public_ip: yes
+          image: "{{ aws_base_amis.debian }}"
+          wait: yes
+        register: result_ec2_instance
+
+      - name: Storing ec2 facts
+        set_fact:
+          aws_ec2_instance: "{{ result_ec2_instance.instances | first }}"
+        when: result_ec2_instance.changed
+
+      - name: Waiting for ssh to spin up
+        wait_for:
+          host: "{{ aws_ec2_instance.public_ip }}"
+          port: 22
+
+      - name: Adding ec2 instance as host for running python 2 install
+        add_host:
+          name: special_host_name
+          ansible_host: "{{ aws_ec2_instance.public_ip }}"
+          ansible_port: 22
+          ansible_user: ubuntu
+          ansible_private_key_file: "jenkins_2.pem"
+
+      - name: Installing python
+        delegate_to: special_host_name
+        raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal)
