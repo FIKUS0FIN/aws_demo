@@ -3,9 +3,11 @@
   tasks:
       - name: Creating es ec2 instance
         ec2:
-          region: eu-central-1
-          image: "ami-1e339e71"
+          key_name: jenkins_2
           instance_type: t2.micro
+          image: ami-1e339e71
+          region: eu-central-1
+          group: webserver
           vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
           wait: yes
