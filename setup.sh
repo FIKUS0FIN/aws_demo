@@ -5,7 +5,7 @@
 
 function grep_aws_id
 {
-  AWS_ID=$(aws ec2 run-instances   --image-id ami-1e339e71 --key-name jenkins --security-groups EC2SecurityGroup --instance-type t2.micro --output text | grep INSTANCES | awk '{print $7}' )
+  AWS_ID=$(aws ec2 run-instances   --image-id ami-1e339e71 --key-name jenkins_2 --security-groups EC2SecurityGroup --instance-type t2.micro --output text | grep INSTANCES | awk '{print $7}' )
   echo "KOROBKA ID is :: $AWS_ID"
 }
 
