@@ -5,6 +5,7 @@
         ec2:
           region: eu-central-1
           image: "ami-1e339e71"
+          instance_type: t2.micro
           vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
           wait: yes
