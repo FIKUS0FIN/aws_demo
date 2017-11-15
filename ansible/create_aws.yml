@@ -3,7 +3,7 @@
   tasks:
       - name: Creating es ec2 instance
         ec2:
-          region: us-west-2
+          region: eu-central-1
           image: "ami-1e339e71"
           vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
