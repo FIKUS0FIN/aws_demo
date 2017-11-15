@@ -1,8 +1,7 @@
 - hosts: all
   remote_user: ubuntu
   gather_facts: False
-
   tasks:
-  - name: install python 2
-    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-    become: true
+  - name: Installing python
+    delegate_to: special_host_name
+    raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal)
