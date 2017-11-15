@@ -7,6 +7,7 @@
           instance_type: t2.micro
           image: ami-1e339e71
           region: eu-central-1
+          security_group: EC2SecurityGroup
           vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
           wait: yes
