@@ -5,7 +5,7 @@
         ec2:
           region: us-west-2
           image: "ami-1e339e71"
-          vpc_subnet_id: vpc-75b9b91d
+          vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
           wait: yes
         register: result_ec2_instance
