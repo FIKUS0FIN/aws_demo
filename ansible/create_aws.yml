@@ -4,8 +4,9 @@
       - name: Creating es ec2 instance
         ec2:
           region: us-west-2
-          assign_public_ip: yes
           image: "ami-1e339e71"
+          vpc_subnet_id: vpc-75b9b91d
+          assign_public_ip: yes
           wait: yes
         register: result_ec2_instance
 
