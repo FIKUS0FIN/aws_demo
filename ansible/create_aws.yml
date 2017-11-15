@@ -7,7 +7,6 @@
           instance_type: t2.micro
           image: ami-1e339e71
           region: eu-central-1
-          group: webserver
           vpc_subnet_id: subnet-4e64b325
           assign_public_ip: yes
           wait: yes
@@ -29,7 +28,7 @@
           ansible_host: "{{ aws_ec2_instance.public_ip }}"
           ansible_port: 22
           ansible_user: ubuntu
-          ansible_private_key_file: "jenkins_2.pem"
+          ansible_private_key_file: ~/.ssh/jenkins_2.pem
 
       - name: Installing python
         delegate_to: special_host_name
