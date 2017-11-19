@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo apt insatll update
-sudo apt install upgrade
-sudo apt insatll nginx
+sudo apt update
+sudo apt upgrade
+sudo apt install -y nginx
 sudo systemctl restart nginx
-sudo apt-get install --no-install-recommends python-minimal
+sudo apt-get install -y --no-install-recommends python-minimal
