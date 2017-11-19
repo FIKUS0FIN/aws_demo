@@ -7,7 +7,7 @@
 
 function define_profision_file
 {
-  if [[ $TAG=="None"]]; then
+  if [[ $TAG=="none"]]; then
     yes | awless create instance name=$NAME image=ami-3f1bd150 keypair=jenkins_2 \
     subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \
     #statements
