@@ -9,15 +9,12 @@
 ##------------------------------------------------------------------------------
 function maine
 {
-  if [[ ${TAG} == "none" ]]; then
-    yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=jenkins_2 \
-    subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup > raw.txt
-    #statements
-  else
-    yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=jenkins_2 \
-    subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \
-    userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/${TAG}.sh > raw.txt
-  fi
+  
+  ##----------------------------------------------------------------------------
+  yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=jenkins_2 \
+  subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \
+  userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/${TAG}.sh > raw.txt
+  ##----------------------------------------------------------------------------
 
   AWS_ID=$(cat raw.txt | grep "instance = " | awk '{print $6}')
   AWS_DNS=$(awless show $AWS_ID | grep PublicDNS | awk '{print $4}')
@@ -35,7 +32,7 @@ function kill_aws ()
     aws ec2 terminate-instances --instance-ids $AWS_ID
   fi
 }
-#--------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 maine
 kill_aws ${KILL}
 
