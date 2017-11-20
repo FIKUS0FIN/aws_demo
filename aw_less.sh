@@ -4,7 +4,7 @@
 #awless create instance name=Jenkins image=ami-1e339e71 keypair=jenkins_2 \
 #securitygroup=EC2SecurityGroup \
 
---------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------
 function maine
 {
   # create Amazon EC2 instance, Name it and *Tag in to do
