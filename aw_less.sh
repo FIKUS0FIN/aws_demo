@@ -23,9 +23,12 @@ function maine
   fi
 
   AWS_ID=$(cat raw.txt | grep "instance = " | awk '{print $6}')
+  echo "$AWS_ID" > ../aws_id.conf
   yes | awless check instance id=$AWS_ID state=running
+  awless show $AWS_ID
   sleep 10
 }
+
 function kill_aws ()
 {
   if [[ ${KILL} == "True" ]]; then
