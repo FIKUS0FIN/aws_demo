@@ -12,8 +12,6 @@ function kill_aws ()
 
 function ansible_task ()
 {
-  sudo su ubuntu
-  sleep 60
   cd ansible
   echo $PWD
   printf "$AWS_DNS\n" > hosts
