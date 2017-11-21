@@ -9,9 +9,9 @@
 ##------------------------------------------------------------------------------
 function maine
 {
-  
+
   ##----------------------------------------------------------------------------
-  yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=jenkins_2 \
+  yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=ubuntu \
   subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \
   userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/${TAG}.sh > raw.txt
   ##----------------------------------------------------------------------------
