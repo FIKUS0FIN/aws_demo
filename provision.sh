@@ -15,8 +15,8 @@ function ansible_task ()
   cd ansible
   echo $PWD
   printf "$AWS_DNS\n" > hosts
-  ansible-playbook -vv  -i hosts --private-key=~/.ssh/jenkins_2.pem python_2.yml
-  ansible-playbook -vv  -i hosts --private-key=~/.ssh/jenkins_2.pem $1.yml
+  ansible-playbook -vv  -i hosts python_2.yml
+  ansible-playbook -vv  -i hosts $1.yml
   exit
 }
 
