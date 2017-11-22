@@ -1,5 +1,6 @@
 - hosts: all
   gather_facts: False
+  remote_user: ubuntu
   tasks:
   - name: Installing python
     delegate_to: special_host_name
