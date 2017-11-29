@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git clone https://github.com/FIKUS0FIN/aws_demo.git
 # Installing nginx + ssl
 IP_ADDRESS="$(ifconfig | egrep -o -m 1 'inet addr:[0-9|.]+' | egrep -o '[0-9|.]+')"
 
@@ -9,7 +10,7 @@ SERVER_NAME=$IP_ADDRESS
 
 shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
-cd nginx/
+cd /aws_demo/provisionign_pakeges/nginx/
 sudo add-apt-repository -y ppa:nginx/stable
 sudo apt-get update
 sudo apt-get -y install nginx
