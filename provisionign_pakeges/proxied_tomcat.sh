@@ -39,4 +39,4 @@ sudo service nginx restart
 # install tomcat
 ##------------------------------------------------------------------------------
 sudo apt install -y docker.io
-sudo docker run -it --rm -p 8888:8080 tomcat:8.0
+sudo docker run -itd --rm -p 8888:8080 tomcat:8.0
