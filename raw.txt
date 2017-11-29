@@ -1,0 +1,4 @@
+create instance count=1 image=ami-3f1bd150 keypair=ubuntu name=test-cli*:_:*proxied_tomcat securitygroup=sg-78b71a12 subnet=subnet-4e64b325 type=t2.micro userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/proxied_tomcat.sh
+
+Confirm? (y/n):     OK	instance = i-03f35c8d7a97e1c70	
+
