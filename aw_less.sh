@@ -21,6 +21,7 @@ function maine
   echo "$AWS_DNS" > ../aws_DNS.conf
   echo "$AWS_ID" > ../aws_id.conf
   yes | awless check instance id=$AWS_ID state=running
+  awless create tag key=TAG resource=$AWS_ID value=${TAG}
   awless show $AWS_ID
   sleep 10
 }
