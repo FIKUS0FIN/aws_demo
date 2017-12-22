@@ -1,0 +1,9 @@
+---
+- name: Install tomcat with roles playbook
+  hosts: node01
+  vars:
+    tomcat_admin_password: 'testpassword'
+
+  roles:
+    - tomcat-centos
+    - { role: webapp-centos }

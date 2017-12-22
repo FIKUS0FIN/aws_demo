@@ -1,0 +1,7 @@
+---
+# tomcat defaults
+tomcat_packages:
+  - tomcat
+  - tomcat-admin-webapps
+tomcat_admin_user: 'admin'
+tomcat_admin_password: 'admin'

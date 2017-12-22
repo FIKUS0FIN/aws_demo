@@ -1,0 +1,4 @@
+---
+# host_vars for node01
+host_variable: 'this is host01 node'
+precedence_variable: 'this one is set in host_vars'

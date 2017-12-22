@@ -1,0 +1,17 @@
+[app]
+node01 ansible_host=192.168.13.113 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/node01/virtualbox/private_key
+node02 ansible_host=192.168.13.114 ansible_ssh_private_key_file=.vagrant/machines/node02/virtualbox/private_key
+
+[proxy]
+node03 ansible_host=192.168.13.115 ansible_ssh_private_key_file=.vagrant/machines/node03/virtualbox/private_key
+
+[cluster:children]
+app
+proxy
+
+[dc1]
+node01
+node03
+
+[dc2]
+node02

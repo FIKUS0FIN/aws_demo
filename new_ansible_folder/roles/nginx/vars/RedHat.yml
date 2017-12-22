@@ -1,0 +1,3 @@
+---
+# RedHat nginx vars
+nginx_conf: /etc/nginx/conf.d

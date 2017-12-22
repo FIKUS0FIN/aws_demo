@@ -1,0 +1,23 @@
+---
+# webapp-centos tasks
+- name: Get hello-world md5sum
+  uri:
+    url: "https://raw.githubusercontent.com/aliusmiles/training-ansible/master/files/hello-world.war.md5"
+    return_content: yes
+  register: webapp_md5
+
+- debug: msg={{ webapp_md5.content }} verbosity=1
+
+- name: Download hello-world war file
+  get_url:
+    url: "https://raw.githubusercontent.com/aliusmiles/training-ansible/master/files/hello-world.war"
+    dest: /var/lib/tomcat/webapps/hello-world.war
+    owner: tomcat
+    group: tomcat
+    checksum: "md5:{{ webapp_md5.content.split(' ')[0] }}"
+
+- name: Check if hello-world is up
+  uri: url="http://{{ ansible_host }}:8080/hello-world"
+  register: result
+  until: result.status == 200
+  retries: 5

@@ -1,0 +1,4 @@
+---
+# webapp defaults
+webapp_name: 'sample'
+webapp_war_base_url: "https://raw.githubusercontent.com/aliusmiles/training-ansible/master/files"

@@ -1,0 +1,3 @@
+---
+# nginx defaults
+webapp_name: 'hello-world'

@@ -1,0 +1,46 @@
+---
+- hosts: all
+  vars:
+    play_variable: 'variable for all'
+  tasks:
+    - debug: msg={{ play_variable }}
+      tags: play_var
+
+    - debug: msg={{ group_variable }}
+      tags: group_var
+
+    - debug: msg={{ host_variable }}
+      tags: host_var
+
+    - debug: msg={{ precedence_variable }}
+      tags: prec_var
+
+- hosts: app
+  vars:
+    play_variable: 'variable for app'
+  tasks:
+    - debug: msg={{ play_variable }}
+      tags: play_var
+
+    - debug: msg={{ group_variable }}
+      tags: group_var
+
+    - debug: msg={{ host_variable }}
+      tags: host_var
+
+    - debug: msg={{ precedence_variable }}
+      tags: prec_var
+
+- hosts: proxy
+  tasks:
+    - debug: msg={{ play_variable }}
+      tags: play_var
+
+    - debug: msg={{ group_variable }}
+      tags: group_var
+
+    - debug: msg={{ host_variable }}
+      tags: host_var
+
+    - debug: msg={{ precedence_variable }}
+      tags: prec_var

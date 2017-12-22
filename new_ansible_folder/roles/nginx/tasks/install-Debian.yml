@@ -1,0 +1,4 @@
+---
+# Install nginx on Ubuntu
+- name: Install nginx packages
+  apt: name=nginx state=present update_cache=yes

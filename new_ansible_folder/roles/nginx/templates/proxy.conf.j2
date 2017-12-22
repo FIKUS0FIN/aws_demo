@@ -1,0 +1,14 @@
+upstream webapp_servers {
+{% for host in groups['app'] %}
+    server {{ host }}:8080;
+{% endfor %}
+}
+
+server {
+    listen 80;
+    server_name  ~^.*$;
+
+    location / {
+        proxy_pass http://webapp_servers/{{ webapp_name }}/;
+    }
+}

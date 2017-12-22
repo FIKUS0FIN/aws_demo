@@ -1,0 +1,37 @@
+Vagrant.configure('2') do |config|
+  config.vm.box = 'ubuntu/xenial64'
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.provision 'python', type: 'shell', inline: 'apt-get install python-minimal -y'
+  config.vm.provider :virtualbox do |v|
+    v.memory = 512
+    v.cpus = 1
+  end
+
+  # bastion VM
+  config.vm.define 'bastion' do |bastion|
+    bastion.vm.hostname = 'bastion.local'
+    bastion.vm.network :private_network, ip: '192.168.13.100'
+    bastion.vm.synced_folder '.', '/home/ubuntu/ansible', mount_options: ['dmode=700,fmode=600']
+    bastion.vm.provision 'ansible', type: 'shell', path: 'files/bootstrap.sh'
+  end
+
+  # centos node VM
+  config.vm.define 'node01' do |node01|
+    node01.vm.box = 'centos/7'
+    node01.vm.hostname = 'node01.local'
+    node01.vm.network :private_network, ip: '192.168.13.113'
+    node01.vm.provision 'python', type: 'shell', inline: 'echo CentOS'
+  end
+
+  # ubuntu node VM
+  config.vm.define 'node02' do |node02|
+    node02.vm.hostname = 'node02.local'
+    node02.vm.network :private_network, ip: '192.168.13.114'
+  end
+
+  # proxy VM
+  config.vm.define 'node03' do |node03|
+    node03.vm.hostname = 'node03.local'
+    node03.vm.network :private_network, ip: '192.168.13.115'
+  end
+end

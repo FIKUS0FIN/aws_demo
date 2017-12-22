@@ -1,0 +1,4 @@
+---
+# Debian webapp vars
+webapps_path: /var/lib/tomcat7/webapps
+tomcat_user: tomcat7

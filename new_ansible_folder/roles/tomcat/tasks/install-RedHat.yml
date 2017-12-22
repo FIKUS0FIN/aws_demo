@@ -1,0 +1,8 @@
+---
+# Install tomcat on CentOS
+- name: Add epel repo
+  yum: name=epel-release state=installed
+
+- name: Install tomcat packages
+  yum: name={{ item }} state=installed
+  with_items: "{{ tomcat_packages }}"

@@ -1,0 +1,5 @@
+---
+# group_vars for all
+webapp_name: 'hello-world'
+group_variable: 'all'
+precedence_variable: 'this one is set in group_vars/all'

@@ -1,0 +1,27 @@
+---
+# tomcat tasks
+- name: Add epel repo
+  yum: name=epel-release state=installed
+
+- name: Install tomcat packages
+  yum: name={{ item }} state=installed
+  with_items: "{{ tomcat_packages }}"
+
+- name: Copy tomcat server config file
+  template: src=server.xml.j2 dest=/etc/tomcat/server.xml
+  notify: Restart tomcat
+
+- name: Copy tomcat users config file
+  template: src=tomcat-users.xml.j2 dest=/etc/tomcat/tomcat-users.xml
+  notify: Restart tomcat
+
+- meta: flush_handlers
+
+- name: Ensure tomcat is started and enabled
+  service: name=tomcat state=started enabled=yes
+
+- name: Check if tomcat manager is up
+  uri: url="http://{{ ansible_host }}:8080/manager/html" user={{ tomcat_admin_user }} password={{ tomcat_admin_password }}
+  register: result
+  until: result.status == 200
+  retries: 5

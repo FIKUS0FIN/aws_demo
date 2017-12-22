@@ -1,0 +1,26 @@
+---
+# webapp tasks
+- name: Include OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Get {{ webapp_name }} md5sum
+  uri:
+    url: "{{ webapp_md5_url }}"
+    return_content: yes
+  register: webapp_md5
+
+- debug: msg={{ webapp_md5.content }} verbosity=1
+
+- name: Download {{ webapp_name }} war file
+  get_url:
+    url: "{{ webapp_url }}"
+    dest: "{{ webapps_path }}/{{ webapp_name }}.war"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
+    checksum: "md5:{{ webapp_md5.content.split(' ')[0] }}"
+
+- name: Check if {{ webapp_name }} is up
+  uri: url="http://{{ ansible_host }}:8080/{{ webapp_name }}"
+  register: result
+  until: result.status == 200
+  retries: 5

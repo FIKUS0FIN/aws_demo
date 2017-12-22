@@ -1,0 +1,3 @@
+---
+# Debian nginx vars
+nginx_conf: /etc/nginx/sites-enabled/

@@ -1,0 +1,4 @@
+---
+# RedHat webapp vars
+webapps_path: /var/lib/tomcat/webapps
+tomcat_user: tomcat

@@ -1,0 +1,16 @@
+---
+# nginx tasks
+- name: Include OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install nginx
+  include: "install-{{ ansible_os_family }}.yml"
+
+- name: Copy nginx proxy config file
+  template: src=proxy.conf.j2 dest={{ nginx_conf }}/proxy.conf
+  notify: Restart nginx
+
+- meta: flush_handlers
+
+- name: Ensure nginx is started and enabled
+  service: name=nginx state=started enabled=yes

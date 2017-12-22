@@ -1,0 +1,19 @@
+---
+- name: Set hosts file
+  hosts: all
+  roles:
+    - { role: hosts }
+
+- name: Tomcat nodes
+  hosts: app
+  vars_files:
+    - secret_vars/tomcat.yml
+
+  roles:
+    - { role: tomcat }
+    - { role: webapp }
+
+- name: Proxy node
+  hosts: proxy
+  roles:
+    - { role: nginx }

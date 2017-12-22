@@ -1,0 +1,7 @@
+---
+# RedHat tomcat vars
+tomcat_packages:
+  - tomcat
+  - tomcat-admin-webapps
+tomcat_service: tomcat
+tomcat_conf: /etc/tomcat

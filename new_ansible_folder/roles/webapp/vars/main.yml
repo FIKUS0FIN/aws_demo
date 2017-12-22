@@ -1,0 +1,4 @@
+---
+# webapp vars
+webapp_url: "{{ webapp_war_base_url }}/{{ webapp_name }}.war"
+webapp_md5_url: "{{ webapp_war_base_url }}/{{ webapp_name }}.war.md5"

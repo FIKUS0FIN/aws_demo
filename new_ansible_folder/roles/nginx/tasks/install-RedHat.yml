@@ -1,0 +1,7 @@
+---
+# Install nginx on CentOS
+- name: Add epel repo
+  yum: name=epel-release state=installed
+
+- name: Install nginx packages
+  yum: name=nginx state=installed

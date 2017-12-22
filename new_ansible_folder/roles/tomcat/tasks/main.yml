@@ -1,0 +1,26 @@
+---
+# tomcat tasks
+- name: Include OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install tomcat
+  include: "install-{{ ansible_os_family }}.yml"
+
+- name: Copy tomcat server config file
+  template: src=server.xml.j2 dest={{ tomcat_conf }}/server.xml
+  notify: Restart tomcat
+
+- name: Copy tomcat users config file
+  template: src=tomcat-users.xml.j2 dest={{ tomcat_conf }}/tomcat-users.xml
+  notify: Restart tomcat
+
+- meta: flush_handlers
+
+- name: Ensure tomcat is started and enabled
+  service: name={{ tomcat_service }} state=started enabled=yes
+
+- name: Check if tomcat manager is up
+  uri: url="http://{{ ansible_host }}:8080/manager/html" user={{ tomcat_admin_user }} password={{ tomcat_admin_password }}
+  register: result
+  until: result.status == 200
+  retries: 5
