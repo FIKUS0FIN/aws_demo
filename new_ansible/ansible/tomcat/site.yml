@@ -1,0 +1,6 @@
+---
+
+- hosts: all
+  remote_user: ubuntu
+  roles:
+     - { role: sprylab.tomcat-ubuntu, tomcat_ubuntu_postgresql_jbdc_install: yes }

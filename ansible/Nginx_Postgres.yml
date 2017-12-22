@@ -1,6 +1,8 @@
 # web.yml
 ---
 - hosts: all
+  roles:
+    - sprylab.tomcat-ubuntu 
   tasks:
     - name: Update apt cache
       apt: update_cache=yes

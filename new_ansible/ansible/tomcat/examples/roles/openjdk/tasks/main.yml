@@ -1,0 +1,7 @@
+---
+# tasks file for openjdk
+
+- name: Install OpenJDK 7
+  apt:
+    name: openjdk-7-jre-headless
+    update_cache: yes

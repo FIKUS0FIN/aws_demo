@@ -1,0 +1,4 @@
+create instance count=1 image=ami-c4ff70ab keypair=ubuntu name=tomcat securitygroup=sg-b8a4c4d2 subnet=subnet-4e64b325 type=t2.micro
+
+Confirm? (y/n):     OK	instance = i-080cd7ef221b075cf	
+
