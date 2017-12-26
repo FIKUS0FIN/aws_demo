@@ -39,12 +39,16 @@
       file: path=/tmp/nginix state=directory
 
     - name: copy nginix support files
-      copy: src=files/nginx/local.conf dest=/tmp/nginix/local.conf
-      copy: src=files/nginx/nginx.conf dest=/tmp/nginix/nginx.conf
-      copy: src=files/nginx/ssl.rules dest=/tmp/nginix/ssl.rules
+      copy: src=files/nginx/{{ item }} dest=/tmp/nginix/{{ item }}
+      with_items:
+        - local.conf
+        - nginx.conf
+        - ssl.rules
+        - proxied_tomcat.sh
 
     - name: run shall command to isntall nginx_proxy
-      shell: files/proxied_tomcat.sh
+      shell: chmod +x /tmp/nginix/proxied_tomcat.sh && bash /tmp/nginix/proxied_tomcat.sh
+      become: true
 
   handlers:
     - name: Restart tomcat
