@@ -10,7 +10,6 @@ SERVER_NAME=$IP_ADDRESS
 
 shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
-cd aws_demo/provisionign_pakeges/nginx/
 sudo add-apt-repository -y ppa:nginx/stable
 sudo apt-get update
 sudo apt-get -y install nginx

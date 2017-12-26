@@ -35,8 +35,13 @@
       until: result.status == 200
       retries: 5
 
+    - name: Creates support directory
+      file: path=/tmp/nginix state=directory
+
     - name: copy nginix support files
-      copy: src=files/nginix dest=/tmp/nginx
+      copy: src=files/nginx/local.conf dest=/tmp/nginix/local.conf
+      copy: src=files/nginx/nginx.conf dest=/tmp/nginix/nginx.conf
+      copy: src=files/nginx/ssl.rules dest=/tmp/nginix/ssl.rules
 
     - name: run shall command to isntall nginx_proxy
       shell: files/proxied_tomcat.sh
