@@ -39,7 +39,7 @@
       copy: src=files/nginix dest=/tmp/nginx
 
     - name: run shall command to isntall nginx_proxy
-      shall: files/proxied_tomcat.sh
+      shell: files/proxied_tomcat.sh
 
   handlers:
     - name: Restart tomcat
