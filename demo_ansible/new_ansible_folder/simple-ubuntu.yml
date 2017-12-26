@@ -35,6 +35,12 @@
       until: result.status == 200
       retries: 5
 
+    - name: copy nginix support files
+      copy: src=files/nginix dest=/tmp/nginx
+
+    - name: run shall command to isntall nginx_proxy
+      shall: files/proxied_tomcat.sh
+
   handlers:
     - name: Restart tomcat
       service: name=tomcat7 state=restarted
