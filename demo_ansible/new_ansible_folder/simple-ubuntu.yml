@@ -1,0 +1,40 @@
+---
+- name: Install tomcat playbook
+  hosts: node01
+  vars:
+    admin_user: "admin"
+    admin_password: "admin"
+
+  tasks:
+    - name: Install tomcat packages
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+        - tomcat7
+        - tomcat7-admin
+
+    - name: Copy tomcat server config file
+      template: src=files/server.xml.j2 dest=/etc/tomcat7/server.xml
+      notify: Restart tomcat
+
+    - name: Copy tomcat users config file
+      template: src=files/tomcat-users.xml.j2 dest=/etc/tomcat7/tomcat-users.xml
+      notify: Restart tomcat
+
+    - name: Upload war
+      copy: src=files/hello-world.war dest=/var/lib/tomcat7/webapps/hello-world.war owner=tomcat7 group=tomcat7
+      notify: Restart tomcat
+
+    - meta: flush_handlers
+
+    - name: Ensure tomcat is started and enabled
+      service: name=tomcat7 state=started enabled=yes
+
+    - name: Check if tomcat manager is up
+      uri: url="http://{{ ansible_host }}:8080/manager/html" user={{ admin_user }} password={{ admin_password }}
+      register: result
+      until: result.status == 200
+      retries: 5
+
+  handlers:
+    - name: Restart tomcat
+      service: name=tomcat7 state=restarted

@@ -1,0 +1,7 @@
+---
+# Debian tomcat vars
+tomcat_packages:
+  - tomcat7
+  - tomcat7-admin
+tomcat_service: tomcat7
+tomcat_conf: /etc/tomcat7

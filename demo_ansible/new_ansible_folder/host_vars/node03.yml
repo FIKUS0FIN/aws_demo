@@ -1,0 +1,3 @@
+---
+# host_vars for node03
+host_variable: 'this is host03 node'
