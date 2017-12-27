@@ -46,8 +46,12 @@
         - ssl.rules
         - proxied_tomcat.sh
 
+    - name: add +x to script
+      shell: chmod +x /tmp/nginix/proxied_tomcat.sh
+      become: true
+
     - name: run shall command to isntall nginx_proxy
-      shell: chmod +x /tmp/nginix/proxied_tomcat.sh && bash /tmp/nginix/proxied_tomcat.sh
+      shell: bash /tmp/nginix/proxied_tomcat.sh
       become: true
 
   handlers:

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git clone https://github.com/FIKUS0FIN/aws_demo.git
 # Installing nginx + ssl
 IP_ADDRESS="$(ifconfig | egrep -o -m 1 'inet addr:[0-9|.]+' | egrep -o '[0-9|.]+')"
 
