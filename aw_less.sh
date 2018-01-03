@@ -7,7 +7,8 @@
 # wait antil state == running
 # KILL function * terminate-instances if ${KILL} if == "TRUE"
 ##------------------------------------------------------------------------------
-function maine
+
+function root
 {
 
   ##----------------------------------------------------------------------------
@@ -34,7 +35,7 @@ function kill_aws ()
   fi
 }
 #-------------------------------------------------------------------------------
-maine
+root
 kill_aws ${KILL}
 
 #yes | awless create instance name=nginx image=ami-3f1bd150 keypair=jenkins_2 \
