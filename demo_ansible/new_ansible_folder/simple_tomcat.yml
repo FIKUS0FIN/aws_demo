@@ -53,7 +53,7 @@
       become: true
 
     - name: run shall command to isntall nginx_proxy
-      script: files/nginx/proxied_tomcat.sh
+      shell: sudo bash /tmp/nginix/proxied_tomcat.sh
       become: true
 
   handlers:
