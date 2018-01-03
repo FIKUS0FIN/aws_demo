@@ -23,6 +23,7 @@ function root
   echo "$AWS_ID" > ../aws_id.conf
   yes | awless check instance id=$AWS_ID state=running
   yes | awless create tag key=TAG resource=$AWS_ID value=${TAG}
+  echo "${TAG}" > ../aws_tag.conf
   awless show $AWS_ID
   sleep 10
 }
