@@ -1,6 +1,7 @@
 # nginx.yml
 ---
 - hosts: nginx
+  remote_user: ubuntu
   tasks:
     - name: Update apt cache
       apt: update_cache=yes

@@ -2,6 +2,7 @@
 ---
 - name: Install tomcat playbook
   hosts: tomcat
+  remote_user: ubuntu
   vars:
     admin_user: "admin"
     admin_password: "admin"
