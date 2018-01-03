@@ -35,7 +35,7 @@
       uri: url="http://{{ ansible_host }}:8080/manager/html" user={{ admin_user }} password={{ admin_password }}
       register: result
       until: result.status == 200
-      retries: 5
+      retries: 10
 
     - name: Creates support directory
       file: path=/tmp/nginix state=directory
