@@ -1,6 +1,7 @@
+# tomcat.yml
 ---
 - name: Install tomcat playbook
-  hosts: node01
+  hosts: all
   vars:
     admin_user: "admin"
     admin_password: "admin"

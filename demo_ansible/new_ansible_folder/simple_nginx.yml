@@ -1,0 +1,11 @@
+# nginx.yml
+---
+- hosts: all
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes
+      become: true
+
+    - name: Install required packages
+      apt: name=nginx
+      become: true

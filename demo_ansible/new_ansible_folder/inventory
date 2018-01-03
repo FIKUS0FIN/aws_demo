@@ -1,1 +1,2 @@
-node01 ansible_host=192.168.13.114 ansible_ssh_private_key_file=.vagrant/machines/node01/virtualbox/private_key
+[all]
+tomcat ansible_host=192.168.13.114 ansible_ssh_private_key_file=.vagrant/machines/node01/virtualbox/private_key
