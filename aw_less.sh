@@ -40,7 +40,7 @@ root
 kill_aws ${KILL}
 
 echo "waiting for provisioning on box "
-sleep 120 
+sleep 160
 #yes | awless create instance name=nginx image=ami-3f1bd150 keypair=jenkins_2 \
 #subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \
 #userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/${TAG}.sh
