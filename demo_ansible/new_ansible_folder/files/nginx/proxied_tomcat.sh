@@ -23,9 +23,3 @@ sudo service nginx restart
 
 # install tomcat
 ##------------------------------------------------------------------------------
-
-if [[ if ${AWS_TAG} == "proxied_tomcat" ]]; then
-  sed -i "s/TOMCAT/${AWS_TAG}/" demo_ansible/new_ansible_folder/inventory
-else
-  sed -i "s/NGIN/${AWS_TAG}/" demo_ansible/new_ansible_folder/inventory
-fi
