@@ -1,4 +1,4 @@
 [nginx]
-NGINX ansible_host=NGINX ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/ubuntu.pem
+NGINX ansible_host=AWS_IP ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/ubuntu.pem
 [tomcat]
-TOMCAT ansible_host=TOMCAT ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/ubuntu.pem
+TOMCAT ansible_host=AWS_IP ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/ubuntu.pem
