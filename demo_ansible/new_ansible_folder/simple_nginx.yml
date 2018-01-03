@@ -1,6 +1,6 @@
 # nginx.yml
 ---
-- hosts: all
+- hosts: nginx
   tasks:
     - name: Update apt cache
       apt: update_cache=yes

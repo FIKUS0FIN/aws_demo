@@ -1,2 +1,4 @@
-[all]
+[nginx]
 tomcat ansible_host=192.168.13.114 ansible_ssh_private_key_file=.vagrant/machines/node01/virtualbox/private_key
+[tomcat]
+jenkins_job  ansible_host=52.59.212.183 ansible_ssh_private_key_file=/var/lib/jenkins/.ssh

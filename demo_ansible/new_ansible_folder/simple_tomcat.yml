@@ -1,7 +1,7 @@
 # tomcat.yml
 ---
 - name: Install tomcat playbook
-  hosts: all
+  hosts: tomcat
   vars:
     admin_user: "admin"
     admin_password: "admin"
@@ -52,7 +52,7 @@
       become: true
 
     - name: run shall command to isntall nginx_proxy
-      script: files/nginx/proxied_tomcat.sh 
+      script: files/nginx/proxied_tomcat.sh
       become: true
 
   handlers:
