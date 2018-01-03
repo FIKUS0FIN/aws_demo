@@ -1,3 +1,0 @@
----
-# host_vars for node02
-host_variable: 'this is host02 node'

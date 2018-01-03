@@ -2,3 +2,6 @@
 # tomcat handlers
 - name: Restart tomcat
   service: name={{ tomcat_service }} state=restarted
+
+- name: Restart nginx
+  service: name={{ nginix_service }} state=restarted

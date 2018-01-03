@@ -1,5 +1,0 @@
----
-# group_vars for app
-tomcat_admin_name: webadmin
-group_variable: 'application'
-precedence_variable: 'this one is set in group_vars/app'

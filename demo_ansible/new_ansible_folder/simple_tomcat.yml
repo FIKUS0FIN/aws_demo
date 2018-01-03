@@ -6,6 +6,8 @@
   vars:
     admin_user: "admin"
     admin_password: "admin"
+    SERVER_NAME: "{{ ansible_host }}"
+    PORT_NUMBER: "8080"
 
   tasks:
     - name: Install tomcat packages
@@ -37,25 +39,28 @@
       until: result.status == 200
       retries: 10
 
-    - name: Creates support directory
-      file: path=/tmp/nginix state=directory
+    - name: Update apt cache
+      apt: update_cache=yes
+      become: true
+
+    - name: Install required packages
+      apt: name=nginx
+      become: true
 
     - name: copy nginix support files
-      copy: src=files/nginx/{{ item }} dest=/tmp/nginix/{{ item }}
+      template: src=files/{{ item }}.conf.j2 dest=/etc/nginx/conf.d/{{ item }}.conf
       with_items:
-        - local.conf
-        - nginx.conf
-        - ssl.rules
-        - proxied_tomcat.sh
-
-    - name: add +x to script
-      shell: chmod +x /tmp/nginix/proxied_tomcat.sh
+        - local
       become: true
+      notify: Restart nginx
+      
+    - meta: flush_handlers
 
-    - name: run shall command to isntall nginx_proxy
-      shell: sudo bash /tmp/nginix/proxied_tomcat.sh
-      become: true
+    - name: Ensure nginx is started and enabled
+      service: name=nginx state=started enabled=yes
 
   handlers:
     - name: Restart tomcat
       service: name=tomcat7 state=restarted
+    - name: Restart nginx
+      service: name=nginx state=restarted
