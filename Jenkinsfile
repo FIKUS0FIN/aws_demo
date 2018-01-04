@@ -5,7 +5,7 @@ node {
 
     }
 
-    stage(awless create EC2 ){
+    stage('awless create EC2'){
 
     sh '''yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=ubuntu \\
     subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \\
