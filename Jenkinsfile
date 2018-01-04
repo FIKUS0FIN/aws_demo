@@ -39,23 +39,11 @@ node {
     sh '''AWS_TAG=$(cat ../aws_tag.conf)
     AWS_ID=$(cat ../aws_id.conf)
     AWS_IP=$(awless show $AWS_ID | grep "Public IP" | awk \'{print $5}\')
-    if ${TAG} == "proxied_tomcat"
-    then
-    	sed -i "s/TOMCAT/${AWS_TAG}/" demo_ansible/new_ansible_folder/inventory
-    	sed -i "s/AWS_IP/${AWS_IP}/" demo_ansible/new_ansible_folder/inventory
-    else
-    	sed -i "s/NGINX/${AWS_TAG}/" demo_ansible/new_ansible_folder/inventory
-    	sed -i "s/AWS_IP/${AWS_IP}/" demo_ansible/new_ansible_folder/inventory
-    fi
-
+  	sed -i "s/TOMCAT/${AWS_TAG}/" demo_ansible/new_ansible_folder/inventory
+  	sed -i "s/AWS_IP/${AWS_IP}/" demo_ansible/new_ansible_folder/inventory
     cd demo_ansible/new_ansible_folder
 
-    if ${TAG} == "proxied_tomcat"
-    then
-    	ansible-playbook -i inventory simple_tomcat.yml
-    else
-    	ansible-playbook -i inventory simple_nginx.yml
-    fi
+  	ansible-playbook -i inventory simple_tomcat.yml
     echo "$AWS_TAG $AWS_ID $AWS_DNS" '''
 
     }
