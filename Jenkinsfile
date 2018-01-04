@@ -47,4 +47,9 @@ node {
     echo "$AWS_TAG $AWS_ID $AWS_DNS" '''
 
     }
+    stage ('buil app and deploy'){
+
+    build 'build_war_app'
+
+    }
 }
