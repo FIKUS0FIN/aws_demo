@@ -24,9 +24,9 @@
       template: src=files/tomcat-users.xml.j2 dest=/etc/tomcat7/tomcat-users.xml
       notify: Restart tomcat
 
-    - name: Upload war
-      copy: src=files/hello-world.war dest=/var/lib/tomcat7/webapps/hello-world.war owner=tomcat7 group=tomcat7
-      notify: Restart tomcat
+#    - name: Upload war
+#      copy: src=files/hello-world.war dest=/var/lib/tomcat7/webapps/hello-world.war owner=tomcat7 group=tomcat7
+#      notify: Restart tomcat
 
     - meta: flush_handlers
 
@@ -53,7 +53,7 @@
         - local
       become: true
       notify: Restart nginx
-      
+
     - meta: flush_handlers
 
     - name: Ensure nginx is started and enabled
