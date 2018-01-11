@@ -71,8 +71,8 @@
       apt: name=zabbix-agent
       become: true
 
-    - name: grep latest templite
-      templite: src=files/zabbix-agent.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
+    - name: templeate for zabbix-agent
+      template: src=files/zabbix-agent.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
       notify: Restart zabbix-agent
 
     - name: Ensure zabbix is started and enabled
