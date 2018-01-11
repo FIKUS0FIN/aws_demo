@@ -60,7 +60,7 @@
       shell: wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.2-1+xenial_all.deb
 
     - name: install all.deb
-      shell: dpkg -i zabbix-release_3.2-1+xenial_all.deb
+      shell: dpkg -i zabbix*.deb
       become: true
 
     - name: update_cahe
@@ -73,7 +73,7 @@
 
     - name: grep latest templite
       templite: src=files/zabbix-agent.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
-      service: name=zabbix-agent enabled=yes
+      service: name=zabbix-agent state=started enabled=yes
 
     - meta: flush_handlers
 
