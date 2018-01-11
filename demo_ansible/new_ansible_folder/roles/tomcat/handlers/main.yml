@@ -5,3 +5,6 @@
 
 - name: Restart nginx
   service: name={{ nginix_service }} state=restarted
+
+- name: Restart zabbix-agent
+  service: name {{ zabbix_agent }} state=restarted

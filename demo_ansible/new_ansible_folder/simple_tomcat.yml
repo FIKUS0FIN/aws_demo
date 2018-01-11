@@ -7,6 +7,7 @@
     admin_user: "admin"
     admin_password: "admin"
     SERVER_NAME: "{{ ansible_host }}"
+    ZABBIX_SERVER: "{{ 35.205.201.49 }}"
     PORT_NUMBER: "8080"
 
   tasks:
@@ -54,6 +55,27 @@
 
     - name: Ensure nginx is started and enabled
       service: name=nginx state=started enabled=yes
+
+    - name: download Zabix agent
+      shell: wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.2-1+xenial_all.deb
+
+    - name: install all.deb
+      shell: dpkg -i zabbix-release_3.2-1+xenial_all.deb
+      become: true
+
+    - name: update_cahe
+      apt: update_cache=yes
+      become: true
+
+    - name: install latest zabix agent
+      apt: name=zabbix-agent
+      become: true
+
+    - name: grep latest templite
+      templite: src=files/zabbix-agent.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
+      service: name=zabbix-agent enabled=yes
+
+    - meta: flush_handlers
 
   handlers:
     - name: Restart tomcat
