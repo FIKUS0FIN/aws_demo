@@ -73,7 +73,10 @@
 
     - name: grep latest templite
       templite: src=files/zabbix-agent.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
-      service: name=zabbix-agent state=started enabled=yes
+      notify: Restart zabbix-agent
+
+   - name: Ensure zabbix is started and enabled
+     service: name=zabbix-agent state=started enabled=yes
 
     - meta: flush_handlers
 
