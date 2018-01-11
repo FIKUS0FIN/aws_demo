@@ -85,3 +85,5 @@
       service: name=tomcat7 state=restarted
     - name: Restart nginx
       service: name=nginx state=restarted
+    - name: Restart zabbix-agent
+      service: name=zabbix-agent state=restarted
