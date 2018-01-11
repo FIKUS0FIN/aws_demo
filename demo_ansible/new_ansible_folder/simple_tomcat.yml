@@ -7,7 +7,7 @@
     admin_user: "admin"
     admin_password: "admin"
     SERVER_NAME: "{{ ansible_host }}"
-    ZABBIX_SERVER: "{{ 35.205.201.49 }}"
+    ZABBIX_SERVER: "35.205.201.49"
     PORT_NUMBER: "8080"
 
   tasks:
