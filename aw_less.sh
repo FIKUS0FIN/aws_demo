@@ -17,6 +17,7 @@ function root
   userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/primary_setup.sh > raw.txt
   ##----------------------------------------------------------------------------
 
+
   AWS_ID=$(cat raw.txt | grep "instance = " | awk '{print $6}')
   AWS_DNS=$(awless show $AWS_ID | grep PublicDNS | awk '{print $4}')
   echo "$AWS_DNS" > ../aws_DNS.conf
