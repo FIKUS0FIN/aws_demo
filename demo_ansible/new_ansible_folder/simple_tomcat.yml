@@ -89,12 +89,16 @@
 
     - name: add run_level auto dell zabbix host
       template: src=files/dell_monitor.sh.j2 dest=/usr/local/bin/dell_monitor.sh
+      become: true
 
     - name: Copy unit to systemd
       copy: src=files/dell_monitor.service dest=/etc/systemd/system/dell_monitor.service
+      become: true
+
 
     - name: Execute some scripts for systemd
-      scripts: files/setup_systemd.sh
+      script: files/setup_systemd.sh
+      become: true
 
   handlers:
     - name: Restart tomcat
