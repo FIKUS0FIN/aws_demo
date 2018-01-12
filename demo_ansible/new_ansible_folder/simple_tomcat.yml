@@ -80,6 +80,9 @@
 
     - meta: flush_handlers
 
+    - name: Add host to Zabbix server
+      script: files/zabbix_rest.sh 
+
   handlers:
     - name: Restart tomcat
       service: name=tomcat7 state=restarted
