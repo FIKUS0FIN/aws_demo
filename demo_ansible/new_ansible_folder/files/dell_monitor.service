@@ -1,0 +1,10 @@
+[Unit]
+Before=shutdown.target reboot.target
+After=mysql.service
+Requires=network.target
+
+[Service]
+ExecStart=/usr/local/bin/dell_monitor.sh
+
+[Install]
+WantedBy=default.target

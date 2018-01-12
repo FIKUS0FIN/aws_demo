@@ -1,0 +1,22 @@
+#!/bin/bash
+
+USER={{ ZABBIX_USER }}
+PASS={{ ZABBIX_PASS }}
+ZABBIX_SERVER={{ ZABBIX_SERVER }}
+API={{ ZABBIX_REST_API }}
+
+# Authenticate with Zabbix API
+
+authenticate() {
+  curl -s -H  'Content-Type: application/json-rpc' -d "{\"jsonrpc\": \"2.0\",\"method\":\"user.login\",\"params\":{\"user\":\""${USER}"\",\"password\":\""${PASS}"\"},\"auth\": null,\"id\":0}" $API
+}
+
+dell_host(){
+  curl -i POST -H 'Content-Type: application/json-rpc' -d "{\"jsonrpc\": \"2.0\",\"method\": \"host.delete\",\"params\": [\"$HOST_ID\"],\"auth\": \"$AUTH_TOKEN\",\"id\": 1}" $API
+}
+
+HOST_ID=$(cat /home/ubuntu/zabbix.conf | grep hostids |  cut -d"\"" -f10)
+
+AUTH_TOKEN=`echo $(authenticate)|jq -r .result`
+
+DELL_HOST=$(dell_host)
