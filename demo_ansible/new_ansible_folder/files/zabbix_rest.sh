@@ -29,7 +29,9 @@ GET_HOST=$(get_host)
 
 CREAT=$(create_host)
 
-echo "$AUTH_TOKEN"   # DEBUG PART
+echo "$AUTH_TOKEN"
 echo "$GET_HOST"
-echo "$CREAT"
+echo "$CREAT" > zabbix.conf
+
+
 #echo "$GET_HOST"   # DEBUG PART
