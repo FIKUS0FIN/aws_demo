@@ -4,6 +4,7 @@ Description=...
 [Service]
 Type=oneshot
 RemainAfterExit=true
+ExecStart=/usr/local/bin/add_monitor.sh
 ExecStop=/usr/local/bin/dell_monitor.sh
 
 [Install]
