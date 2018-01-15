@@ -84,23 +84,27 @@
 
     - meta: flush_handlers
 
-    - name: Add host to Zabbix server
-      script: files/zabbix_rest.sh
+    - name: run_level auto add zabbix host
+      template: src=files/add_monitor.sh.j2 dest=/usr/local/bin/add_monitor.sh
 
-    - name: add run_level auto dell zabbix host
+    - name: run_level auto dell zabbix host
       template: src=files/dell_monitor.sh.j2 dest=/usr/local/bin/dell_monitor.sh
       become: true
 
     - name: Copy unit to systemd
-      copy: src=files/dell_monitor.service dest=/etc/systemd/system/dell_monitor.service
+      copy: src=files/dell_monitor.service dest=/etc/systemd/system/add-dell_monitor.service
+      become: true
+
+    - name: Change permissions to add_monitor.sh
+      shell: chmod 744 /usr/local/bin/add_monitor.sh
       become: true
 
     - name: Change permissions to dell_monitor.sh
       shell: chmod 744 /usr/local/bin/dell_monitor.sh
       become: true
 
-    - name: Change permissions to /etc/systemd/system/dell_monitor.service
-      shell: chmod 664 /etc/systemd/system/dell_monitor.service
+    - name: Change permissions to /etc/systemd/system/add-dell_monitor.service
+      shell: chmod 664 /etc/systemd/system/add-dell_monitor.service
       become: true
 
     - name: Reload demon systemctl
@@ -108,7 +112,7 @@
       become: true
 
     - name: Enable systemctl servide dell_monitor
-      shell: systemctl enable dell_monitor.service
+      shell: systemctl enable add-dell_monitor.service
       become: true
 
     - name: Reload demon systemctl _2
@@ -116,11 +120,11 @@
       become: true
 
     - name: Enable systemctl servide dell_monitor _2
-      shell: systemctl enable dell_monitor.service
+      shell: systemctl enable add-dell_monitor.service
       become: true
 
-    - mane: strat dell_monitor demon
-      shell: systemctl start  dell_monitor.service
+    - mane: start add-dell_monitor demon
+      shell: systemctl start add-dell_monitor.service
 
   handlers:
     - name: Restart tomcat

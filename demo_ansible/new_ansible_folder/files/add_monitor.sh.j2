@@ -1,9 +1,10 @@
 #!/bin/bash
 
-USER='Admin'
-PASS='admin'
-ZABBIX_SERVER='35.205.201.49'
-API='http://35.205.201.49/zabbix/api_jsonrpc.php'
+USER={{ ZABBIX_USER }}
+PASS={{ ZABBIX_PASS }}
+ZABBIX_SERVER={{ ZABBIX_SERVER }}
+API={{ ZABBIX_REST_API }}
+
 
 IP_ADDRESS="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
