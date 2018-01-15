@@ -1,10 +1,12 @@
 [Unit]
-Before=shutdown.target reboot.target
-After=mysql.service
-Requires=network.target
+Description=runs only upon shutdown
+Conflicts=shutdown.target reboot.target
+After=network.target
 
 [Service]
+Type=oneshot
 ExecStart=/usr/local/bin/dell_monitor.sh
+RemainAfterExit=yes
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
