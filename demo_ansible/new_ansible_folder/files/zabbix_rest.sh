@@ -33,4 +33,4 @@ CREAT=$(create_host)
 
 echo "$AUTH_TOKEN"
 echo "$GET_HOST"
-echo "$CREAT" > zabbix.conf
+echo "$CREAT" > /home/ubuntu/zabbix.conf
