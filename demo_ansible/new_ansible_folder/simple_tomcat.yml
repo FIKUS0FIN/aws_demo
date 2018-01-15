@@ -95,15 +95,29 @@
       copy: src=files/dell_monitor.service dest=/etc/systemd/system/dell_monitor.service
       become: true
 
-
-    - name: Execute some scripts for systemd
-      script: files/setup_systemd.sh
+    - name: Change permissions to dell_monitor.sh
+      shell: chmod 744 /usr/local/bin/dell_monitor.sh
       become: true
+
+    - name: Change permissions to /etc/systemd/system/dell_monitor.service
+      shell: chmod 664 /etc/systemd/system/dell_monitor.service
+      become: true
+
+    - name: Reload demon systemctl
+      shell: systemctl daemon-reload
+      become: true
+
+    - name: Enable systemctl servide dell_monitor
+      shell: systemctl enable dell_monitor.service
+      become: true
+
 
   handlers:
     - name: Restart tomcat
       service: name=tomcat7 state=restarted
+
     - name: Restart nginx
       service: name=nginx state=restarted
+
     - name: Restart zabbix-agent
       service: name=zabbix-agent state=restarted
