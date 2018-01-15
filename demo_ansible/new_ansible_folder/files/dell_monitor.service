@@ -1,7 +1,7 @@
 [Unit]
 Description=runs only upon shutdown
-Conflicts=shutdown.target reboot.target
-After=network.target
+Before=shutdown.target reboot.target
+Requires=network.target
 
 [Service]
 Type=oneshot
