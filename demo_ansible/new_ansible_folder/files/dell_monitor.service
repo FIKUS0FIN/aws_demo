@@ -1,13 +1,9 @@
 [Unit]
-Description=runs only upon shutdown
-Requires=network.target
-After=network.target
-Before=shutdown.target reboot.target halt.target
-DefaultDependencies=no
+Description=...
 
 [Service]
 Type=oneshot
-ExecStart=/bin/true
+RemainAfterExit=true
 ExecStop=/usr/local/bin/dell_monitor.sh
 
 [Install]
