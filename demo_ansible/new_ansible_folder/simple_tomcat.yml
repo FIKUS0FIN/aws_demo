@@ -111,6 +111,14 @@
       shell: systemctl enable dell_monitor.service
       become: true
 
+    - name: Reload demon systemctl _2
+      shell: systemctl daemon-reload
+      become: true
+
+    - name: Enable systemctl servide dell_monitor _2 
+      shell: systemctl enable dell_monitor.service
+      become: true
+
 
   handlers:
     - name: Restart tomcat
