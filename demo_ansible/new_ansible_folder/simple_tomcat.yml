@@ -8,10 +8,10 @@
     admin_password: "admin"
     SERVER_NAME: "{{ ansible_host }}"
     PORT_NUMBER: "8080"
-    ZABBIX_SERVER: "35.205.201.49"
+    ZABBIX_SERVER: "10.10.10.192"
     ZABBIX_USER: "Admin"
-    ZABBIX_PASS: "admin"
-    ZABBIX_REST_API: "http://35.205.201.49/zabbix/api_jsonrpc.php"
+    ZABBIX_PASS: "zabbix"
+    ZABBIX_REST_API: "http://10.10.10.192/zabbix/api_jsonrpc.php"
 
 
   tasks:
