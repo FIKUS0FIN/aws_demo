@@ -7,10 +7,9 @@ node {
 
     stage('awless create EC2'){
 
-    sh '''yes | awless create instance name=${NAME}*:_:*${TAG} image=ami-3f1bd150 keypair=ubuntu \\
-    subnet=subnet-4e64b325 securitygroup=@EC2SecurityGroup \\
+    sh '''yes | awless create instance name=${NAME} image=ami-3f1bd150 keypair=ubuntu \
+    subnet=subnet-870997ec securitygroup=@BraineNew_ZAB \
     userdata=https://raw.githubusercontent.com/FIKUS0FIN/aws_demo/master/provisionign_pakeges/primary_setup.sh > raw.txt'''
-
     }
 
     stage('create Tag for inctance  ') {
